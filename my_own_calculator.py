@@ -24,7 +24,11 @@ button_row4 = Frame(window)
 button_row4.pack(expand = True, fill = 'both')
 
 #Buttons on row 1:
-button7 = Button(button_row1, text = '7' , font = ('Vernda',20) , width = 1)
+button7 = Button(
+	button_row1, 
+	text = '7' , 
+	font = ('Vernda',20) , 
+	width = 1)
 button7.pack(side = LEFT, expand = True , fill = 'both')
 
 button8 = Button(button_row1, text = '8' , font = ('Vernda',20) , width = 1)
