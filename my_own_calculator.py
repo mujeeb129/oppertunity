@@ -4,11 +4,9 @@ things to do :
 	2. Backend work : -create a global variable for user input through button 
 					  -store the expression in an string variable
 					  -press() : to concatinate with global variable to make an expression
-					  -all_clear() : to clear all the characters in the 
+					  -all_clear() : to clear all the characters in the string variable
+					  -clear() : Delete last entered character
 '''
-
-
-
 from tkinter import *
 
 window = Tk()		#Here we created a window
@@ -16,9 +14,10 @@ window.title("Calculator")			#title() - this method gives title to the window
 window.geometry("270x400+100+100")			#geometry() - this method helps to give desired geometry
 window.resizable(0,0)
 
+#a variable is created out side the funtions to make it global
+expression = ""		
 
-expression = ""		#a variable is created out side the funtions to make it global
-
+#funtions or commands for button
 def press(num):
 	global expression
 	expression = expression + str(num)
@@ -29,7 +28,7 @@ def all_clear():
 	expression = ''
 	data.set(expression)
 
-def cleared():
+def clear():
 	global expression
 	expression = expression[:-1]
 	data.set(expression)
@@ -42,16 +41,25 @@ def equal_to():
 
 data = StringVar()
 
+
+#menu_bar = Menu(window , activeborderwidth = 0 , bd = 0 , bg = '#ffffff')
+#file_menu = Menu(menu_bar , tearoff = 0 , activeborderwidth = 0 , relief = GROOVE)
+#menu_bar.add_command(label = "STANDARD" , font = ('Segoe UI Bold' , 14) , )
+
+#window.config(menu = menu_bar)
+
+
 labl = Label(
 	window, 
 	text = "Sample" , 
 	anchor = SE , 
 	textvariable = data ,
-	font = ('Verdana' , 22) , 
+	font = ('Segoe UI Bold' , 22) , 
 	height = 3 , 
 	bg ='#ffffff' , 
 	fg = '#000000')
 labl.pack(expand = True , fill = 'both')
+
 
 
 button_row1 = Frame(window)			#Frame - this attribute helps us to divide the window into frames(differentiating)
@@ -109,9 +117,12 @@ buttonDEL = Button(
 	width = 1, 
 	bd = 0 ,
 	relief = GROOVE ,
+	activebackground = '#F23C34' ,
+	activeforeground = '#ffffff' ,
 	highlightbackground = '#ffffff' ,
+	highlightcolor = '#F23C34' ,
 	fg = '#F23C34' ,
-	command = cleared)
+	command = clear)
 buttonDEL.pack(side = LEFT , expand = True , fill = 'both')
 
 buttonAC = Button(
@@ -221,7 +232,7 @@ buttonPlus = Button(
 	font = ('Segoe UI',15) , 
 	width = 1 , 
 	bd = 0 ,
-	relief = GROOVE ,
+	relief = RIDGE ,
 	highlightbackground = '#ffffff' ,
 	command = lambda : press('+'))
 buttonPlus.pack(side = LEFT , expand = True , fill = 'both')
