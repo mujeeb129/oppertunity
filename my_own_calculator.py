@@ -12,8 +12,8 @@ from tkinter import *
 window = Tk()		#Here we created a window
 window.title("Calculator")			#title() - this method gives title to the window
 window.geometry("270x400+100+100")			#geometry() - this method helps to give desired geometry
-window.resizable(0,0)
-
+window.resizable(0,0)		#resizable() - this method enables us to resize the window((1,1) for changing height and width)
+window.config(bg = '#ffffff')		#config() - this is to configure the whole widget
 #a variable is created out side the funtions to make it global
 expression = ""
 
@@ -35,48 +35,80 @@ def clear():
 
 def equal_to():
 	global expression
+#This condition check wheather the given expression is valid or not
 	if '/0' in expression :
 		expression = ''
 		data.set('ERROR')
-	if expression[0] == '0':
-		expression = expression[1:]
+#This iteration removes 0s from the starting of the expression(doesn't remove 0s after the operator)
+	for i in range(0,int(len(expression))):
+		if expression[0] == '0':
+			expression = expression[1:]
+		else:
+			break
 	expression = str(eval(expression))
 	data.set(expression)
 
 
+
+def clicked():
+	if switch.config('text')[-1] == 'BASIC' :
+		switch.config(text='ADVANCED' )
+		window.geometry('570x400')
+		advanced()
+
+	else :
+		switch.config(text = 'BASIC')
+		window.geometry('270x400')
+def advanced():
+	button_sin = Button(
+	button_row1 ,
+	text = '7' ,
+	font = ('Segoe UI Bold',20) ,
+	width = 1 ,
+	bd = 0 ,
+	relief = GROOVE ,
+	highlightbackground = '#ffffff' ,
+	)
+	button_sin.pack(side = LEFT)
+
 data = StringVar()
+#Creating a menu bar for switching between basic and advanced operations
+global switch
+switch = Button(
+	window ,
+	text= "BASIC" ,
+	font= ('Verdana', 10) ,
+	bg = '#ffffff' ,
+	activebackground = '#ffffff' ,
+	relief = GROOVE ,
+	highlightbackground = '#ffffff' ,
+	width = 7 ,
+	bd = 0 ,
+	command = clicked)
+switch.pack(side = TOP)
 
-
-menu_bar = Menu(window , activeborderwidth = 0 , bd = 0 , bg = '#ffffff' ,)
-file_menu = Menu(menu_bar , tearoff = 0 , activeborderwidth = 0 , relief = GROOVE)
-menu_bar.add_command(label = "STANDARD" , font = ('Segoe UI Bold' , 14) , command = None ,)
-
-window.config(menu = menu_bar)
-
-
+#This attribute Label() helps you create screen for displaying characters
 labl = Label(
 	window,
 	text = "Sample" ,
 	anchor = SE ,
 	textvariable = data ,
 	font = ('Segoe UI Bold' , 22) ,
-	height = 3 ,
+	height = 2 ,
 	bg ='#ffffff' ,
 	fg = '#000000')
 labl.pack(expand = True , fill = 'both')
 
 
-
+#Frame attribute acts as div for master window
 button_row1 = Frame(window)			#Frame - this attribute helps us to divide the window into frames(differentiating)
 button_row1.pack(expand = True , fill = 'both')
 
 button_row2 = Frame(window)
 button_row2.pack(expand = True, fill = 'both')
 
-
 button_row3 = Frame(window)			#Frame - this attribute helps us to divide the window into frames(differentiating)
 button_row3.pack(expand = True , fill = 'both')
-
 
 button_row4 = Frame(window)
 button_row4.pack(expand = True, fill = 'both')
@@ -137,6 +169,10 @@ buttonAC = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
+	activebackground = '#F23C34' ,
+	activeforeground = '#ffffff' ,
+	bg = '#F23C34' ,
+	fg = '#ffffff' ,
 	highlightbackground = '#ffffff' ,
 	command = all_clear)
 buttonAC.pack(side = LEFT , expand = True , fill = 'both')
