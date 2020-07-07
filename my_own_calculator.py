@@ -1,7 +1,7 @@
 '''
 things to do :
 	1. Create the frontend(purely for confidence)
-	2. Backend work : -create a global variable for user input through button 
+	2. Backend work : -create a global variable for user input through button
 					  -store the expression in an string variable
 					  -press() : to concatinate with global variable to make an expression
 					  -all_clear() : to clear all the characters in the string variable
@@ -15,7 +15,7 @@ window.geometry("270x400+100+100")			#geometry() - this method helps to give des
 window.resizable(0,0)
 
 #a variable is created out side the funtions to make it global
-expression = ""		
+expression = ""
 
 #funtions or commands for button
 def press(num):
@@ -35,6 +35,11 @@ def clear():
 
 def equal_to():
 	global expression
+	if '/0' in expression :
+		expression = ''
+		data.set('ERROR')
+	if expression[0] == '0':
+		expression = expression[1:]
 	expression = str(eval(expression))
 	data.set(expression)
 
@@ -42,21 +47,21 @@ def equal_to():
 data = StringVar()
 
 
-#menu_bar = Menu(window , activeborderwidth = 0 , bd = 0 , bg = '#ffffff')
-#file_menu = Menu(menu_bar , tearoff = 0 , activeborderwidth = 0 , relief = GROOVE)
-#menu_bar.add_command(label = "STANDARD" , font = ('Segoe UI Bold' , 14) , )
+menu_bar = Menu(window , activeborderwidth = 0 , bd = 0 , bg = '#ffffff' ,)
+file_menu = Menu(menu_bar , tearoff = 0 , activeborderwidth = 0 , relief = GROOVE)
+menu_bar.add_command(label = "STANDARD" , font = ('Segoe UI Bold' , 14) , command = None ,)
 
-#window.config(menu = menu_bar)
+window.config(menu = menu_bar)
 
 
 labl = Label(
-	window, 
-	text = "Sample" , 
-	anchor = SE , 
+	window,
+	text = "Sample" ,
+	anchor = SE ,
 	textvariable = data ,
-	font = ('Segoe UI Bold' , 22) , 
-	height = 3 , 
-	bg ='#ffffff' , 
+	font = ('Segoe UI Bold' , 22) ,
+	height = 3 ,
+	bg ='#ffffff' ,
 	fg = '#000000')
 labl.pack(expand = True , fill = 'both')
 
@@ -78,9 +83,9 @@ button_row4.pack(expand = True, fill = 'both')
 
 #Buttons on row 1:
 button7 = Button(
-	button_row1, 
-	text = '7' , 
-	font = ('Segoe UI Bold',20) , 
+	button_row1,
+	text = '7' ,
+	font = ('Segoe UI Bold',20) ,
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
@@ -89,10 +94,10 @@ button7 = Button(
 button7.pack(side = LEFT, expand = True , fill = 'both')
 
 button8 = Button(
-	button_row1, 
-	text = '8' , 
-	font = ('Segoe UI Bold',20) , 
-	width = 1 , 
+	button_row1,
+	text = '8' ,
+	font = ('Segoe UI Bold',20) ,
+	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
 	highlightbackground = '#ffffff' ,
@@ -100,10 +105,10 @@ button8 = Button(
 button8.pack(side = LEFT , expand = True , fill = 'both')
 
 button9 = Button(
-	button_row1, 
-	text = '9' , 
-	font = ('Segoe UI Bold',20) , 
-	width = 1 , 
+	button_row1,
+	text = '9' ,
+	font = ('Segoe UI Bold',20) ,
+	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
 	highlightbackground = '#ffffff' ,
@@ -111,10 +116,10 @@ button9 = Button(
 button9.pack(side = LEFT , expand = True , fill = 'both')
 
 buttonDEL = Button(
-	button_row1, 
-	text = 'DEL' , 
-	font = ('Segoe UI',15) , 
-	width = 1, 
+	button_row1,
+	text = 'DEL' ,
+	font = ('Segoe UI',15) ,
+	width = 1,
 	bd = 0 ,
 	relief = GROOVE ,
 	activebackground = '#F23C34' ,
@@ -126,10 +131,10 @@ buttonDEL = Button(
 buttonDEL.pack(side = LEFT , expand = True , fill = 'both')
 
 buttonAC = Button(
-	button_row1, 
-	text = 'AC' , 
-	font = ('Segoe UI',15) , 
-	width = 1 , 
+	button_row1,
+	text = 'AC' ,
+	font = ('Segoe UI',15) ,
+	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
 	highlightbackground = '#ffffff' ,
@@ -138,10 +143,10 @@ buttonAC.pack(side = LEFT , expand = True , fill = 'both')
 
 #Buttons on row 2:
 button4 = Button(
-	button_row2, 
-	text = '4' , 
-	font = ('Segoe UI Bold',20) , 
-	width = 1 , 
+	button_row2,
+	text = '4' ,
+	font = ('Segoe UI Bold',20) ,
+	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
 	highlightbackground = '#ffffff' ,
@@ -149,10 +154,10 @@ button4 = Button(
 button4.pack(side = LEFT , expand = True , fill = 'both')
 
 button5 = Button(
-	button_row2, 
-	text = '5' , 
-	font = ('Segoe UI Bold',20) , 
-	width = 1, 
+	button_row2,
+	text = '5' ,
+	font = ('Segoe UI Bold',20) ,
+	width = 1,
 	bd = 0 ,
 	relief = GROOVE ,
 	highlightbackground = '#ffffff' ,
@@ -160,10 +165,10 @@ button5 = Button(
 button5.pack(side = LEFT , expand = True , fill = 'both')
 
 button6 = Button(
-	button_row2, 
-	text = '6' , 
-	font = ('Segoe UI Bold',20) , 
-	width = 1 , 
+	button_row2,
+	text = '6' ,
+	font = ('Segoe UI Bold',20) ,
+	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
 	highlightbackground = '#ffffff' ,
@@ -171,21 +176,21 @@ button6 = Button(
 button6.pack(side = LEFT , expand = True , fill = 'both')
 
 buttonX = Button(
-	button_row2, 
-	text = '*' , 
-	font = ('Segoe UI',15) , 
+	button_row2,
+	text = '*' ,
+	font = ('Segoe UI',15) ,
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' , 
+	highlightbackground = '#ffffff' ,
 	command =lambda : press('*'))
 buttonX.pack(side = LEFT , expand = True , fill = 'both')
 
 buttonDiv = Button(
-	button_row2, 
-	text = '/' , 
-	font = ('Segoe UI',15) , 
-	width = 1 , 
+	button_row2,
+	text = '/' ,
+	font = ('Segoe UI',15) ,
+	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
 	highlightbackground = '#ffffff' ,
@@ -194,9 +199,9 @@ buttonDiv.pack(side = LEFT , expand = True , fill = 'both')
 
 #Buttons on row 3:
 button1 = Button(
-	button_row3, 
-	text = '1' , 
-	font = ('Segoe UI Bold',20) , 
+	button_row3,
+	text = '1' ,
+	font = ('Segoe UI Bold',20) ,
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
@@ -205,10 +210,10 @@ button1 = Button(
 button1.pack(side = LEFT , expand = True , fill = 'both')
 
 button2 = Button(
-	button_row3, 
-	text = '2' , 
-	font = ('Segoe UI Bold',20) , 
-	width = 1 , 
+	button_row3,
+	text = '2' ,
+	font = ('Segoe UI Bold',20) ,
+	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
 	highlightbackground = '#ffffff' ,
@@ -216,9 +221,9 @@ button2 = Button(
 button2.pack(side = LEFT , expand = True , fill = 'both')
 
 button3 = Button(
-	button_row3, 
-	text = '3' , 
-	font = ('Segoe UI Bold',20) , 
+	button_row3,
+	text = '3' ,
+	font = ('Segoe UI Bold',20) ,
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
@@ -227,10 +232,10 @@ button3 = Button(
 button3.pack(side = LEFT , expand = True , fill = 'both')
 
 buttonPlus = Button(
-	button_row3, 
-	text = '+' , 
-	font = ('Segoe UI',15) , 
-	width = 1 , 
+	button_row3,
+	text = '+' ,
+	font = ('Segoe UI',15) ,
+	width = 1 ,
 	bd = 0 ,
 	relief = RIDGE ,
 	highlightbackground = '#ffffff' ,
@@ -238,9 +243,9 @@ buttonPlus = Button(
 buttonPlus.pack(side = LEFT , expand = True , fill = 'both')
 
 buttonSub = Button(
-	button_row3, 
-	text = '-' , 
-	font = ('Segoe UI',15) , 
+	button_row3,
+	text = '-' ,
+	font = ('Segoe UI',15) ,
 	width = 1 ,
 	highlightbackground = '#ffffff' ,
 	bd = 0 ,
@@ -250,10 +255,10 @@ buttonSub.pack(side = LEFT , expand = True , fill = 'both')
 
 #Buttons on row 4 :
 button0 = Button(
-	button_row4, 
-	text = '0' , 
-	font = ('Segoe UI Bold',17) , 
-	width = 1 , 
+	button_row4,
+	text = '0' ,
+	font = ('Segoe UI Bold',17) ,
+	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
 	highlightbackground = '#ffffff' ,
@@ -261,10 +266,10 @@ button0 = Button(
 button0.pack(side = LEFT , expand = True , fill = 'both')
 
 buttonDot = Button(
-	button_row4, 
-	text = '.' , 
-	font = ('Segoe UI',17) , 
-	width = 1 , 
+	button_row4,
+	text = '.' ,
+	font = ('Segoe UI',17) ,
+	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
 	highlightbackground = '#ffffff' ,
@@ -272,9 +277,9 @@ buttonDot = Button(
 buttonDot.pack(side = LEFT , expand = True , fill = 'both')
 
 buttonPower = Button(
-	button_row4, 
-	text = '^' , 
-	font = ('Segoe UI',17) , 
+	button_row4,
+	text = '^' ,
+	font = ('Segoe UI',17) ,
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
@@ -283,10 +288,10 @@ buttonPower = Button(
 buttonPower.pack(side = LEFT , expand = True , fill = 'both')
 
 buttonEqual = Button(
-	button_row4, 
-	text = '=' , 
-	font = ('Segoe UI',17) , 
-	width = '5' , 
+	button_row4,
+	text = '=' ,
+	font = ('Segoe UI',17) ,
+	width = '5' ,
 	bd = 0 ,
 	relief = GROOVE ,
 	bg = '#FFE138' ,
@@ -295,10 +300,12 @@ buttonEqual = Button(
 buttonEqual.pack(side = LEFT , expand = True , fill = 'both')
 '''
 button7 = Button(
-	button_row4, 
-	text = '7' , 
-	font = ('Segoe UI Bold',20) , 
+	button_row4,
+	text = '7' ,
+	font = ('Segoe UI Bold',20) ,
 	width = 1)
-button7.pack(side = LEFT , expand = True , fill = 'both') 
+button7.pack(side = LEFT , expand = True , fill = 'both')
 '''
+
+
 window.mainloop()
