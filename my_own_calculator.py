@@ -1,5 +1,6 @@
+#!/usr/bin/env python3
 from tkinter import *
-import math
+import math		#math module is used to import advanced math functions
 '''
 things to do :
 	1. Create the frontend(purely for confidence)
@@ -49,8 +50,37 @@ def equal_to():
 	expression = str(eval(expression))
 	data.set(expression)
 
+def fsin():
+	global expression
+	expression = str(math.sin(float(expression)))
+	data.set(expression)
 
+def fcos():
+	global expression
+	expression = str(math.cos(float(expression)))
+	data.set(expression)
 
+def ftan():
+	global expression
+	expression = str(math.tan(float(expression)))
+	data.set(expression)
+
+def flog():
+	global expression
+	expression = str(math.log(float(expression)))
+	data.set(expression)
+
+def fact():
+	global expression
+	expression = str(math.factorial(int(expression)))
+	data.set(expression)
+
+def fexp():
+	global expression
+	expression = str(math.exp(int(expression)))
+	data.set(expression)
+
+#This function is used switch from BASIC to ADVANCED
 def clicked():
 	if switch.config('text')[-1] == 'BASIC' :
 		switch.config(text='ADVANCED' )
@@ -62,6 +92,8 @@ def clicked():
 		window.geometry('270x400')
 		hiding()
 
+
+#This function is used to create buttons for advanced mode
 def advanced():
 	button0.config(font = ('Segoe UI Bold',20))
 	buttonPower.config(font = ('Segoe UI',15))
@@ -97,7 +129,6 @@ def advanced():
 	button_fact.pack(expand = True , side = LEFT , fill = 'both')
 
 def hiding():
-
 	button_sin.forget()
 	button_cos.forget()
 	button_tan.forget()
@@ -131,8 +162,10 @@ def hiding():
 	buttonPower.pack(side = LEFT)
 	buttonDot.pack(side = LEFT)
 
+
 data = StringVar()
-#Creating a menu bar for switching between basic and advanced operations
+
+
 global switch
 switch = Button(
 	window ,
@@ -216,7 +249,7 @@ button_sin = Button(
 	bd = 0 ,
 	relief = GROOVE ,
 	highlightbackground = '#ffffff' ,
-	)
+	command = fsin)
 #button_sin.pack(expand = True , side = RIGHT , fill = 'both')
 
 button_cos = Button(
@@ -227,7 +260,7 @@ button_cos = Button(
 	bd = 0 ,
 	relief = GROOVE ,
 	highlightbackground = '#ffffff' ,
-	)
+	command = fcos)
 #button_cos.pack(expand = True , side = RIGHT , fill = 'both')
 
 buttonDEL = Button(
@@ -301,7 +334,8 @@ button_tan = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' )
+	highlightbackground = '#ffffff',
+	command = ftan )
 #button_tan.pack(expand = True , side = RIGHT , fill = 'both')
 
 button_log = Button(
@@ -311,7 +345,8 @@ button_log = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' )
+	highlightbackground = '#ffffff' ,
+	command = flog)
 #button_log.pack(expand = True , side = RIGHT , fill = 'both')
 
 buttonX = Button(
@@ -377,7 +412,8 @@ button_pi = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff')
+	highlightbackground = '#ffffff' ,
+	command =lambda : press(str(math.pi)))
 
 button_exp = Button(
 	button_row3,
@@ -386,7 +422,8 @@ button_exp = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff')
+	highlightbackground = '#ffffff' ,
+	command = fexp)
 
 buttonPlus = Button(
 	button_row3,
@@ -473,7 +510,7 @@ button_fact = Button(
 	bd = 0 ,
 	relief = GROOVE ,
 	highlightbackground = '#ffffff' ,
-	command = lambda : press('('))
+	command = fact)
 
 buttonEqual = Button(
 	button_row4,
