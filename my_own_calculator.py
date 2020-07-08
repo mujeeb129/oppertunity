@@ -1,3 +1,5 @@
+from tkinter import *
+import math
 '''
 things to do :
 	1. Create the frontend(purely for confidence)
@@ -7,7 +9,6 @@ things to do :
 					  -all_clear() : to clear all the characters in the string variable
 					  -clear() : Delete last entered character
 '''
-from tkinter import *
 
 window = Tk()		#Here we created a window
 window.title("Calculator")			#title() - this method gives title to the window
@@ -59,17 +60,40 @@ def clicked():
 	else :
 		switch.config(text = 'BASIC')
 		window.geometry('270x400')
+
 def advanced():
-	button_sin = Button(
-	button_row1 ,
-	text = '7' ,
-	font = ('Segoe UI Bold',20) ,
-	width = 1 ,
-	bd = 0 ,
-	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
-	)
-	button_sin.pack(side = LEFT)
+	button0.config(font = ('Segoe UI Bold',20))
+	buttonPower.config(font = ('Segoe UI',15))
+	buttonDot.config(font = ('Segoe UI',15))
+	buttonEqual.config(width = 1 ,
+		font = ('Segoe UI' , 15) ,
+		text = '.' ,
+		bd = 0 ,
+		bg = '#D9D9D9' ,
+		relief = GROOVE ,
+		highlightbackground = '#ffffff' ,
+		command = lambda : press('.'))
+	buttonDot.config(
+		text = '=' ,
+		font = ('Segoe UI',15) ,
+		width = '1' ,
+		bd = 0 ,
+		relief = GROOVE ,
+		bg = '#FFE138' ,
+		highlightbackground = '#FFFFFF' ,
+		command = equal_to)
+	button_sin.pack(expand = True , side = RIGHT , fill = 'both')
+	button_cos.pack(expand = True , side = RIGHT , fill = 'both')
+	button_tan.pack(expand = True , side = LEFT , fill = 'both')
+	button_log.pack(expand = True , side = LEFT , fill = 'both')
+	button_exp.pack(expand = True , side = LEFT , fill = 'both')
+	button_pi.pack(expand = True , side = LEFT , fill = 'both')
+	buttonOB.pack(expand = True , side = LEFT , fill = 'both')
+	buttonCB.pack(expand = True , side = LEFT , fill = 'both')
+	buttonPower.pack(side = RIGHT)
+	buttonEqual.pack(side = RIGHT)
+	buttonDot.pack(side = RIGHT)
+	button_fact.pack(expand = True , side = LEFT , fill = 'both')
 
 data = StringVar()
 #Creating a menu bar for switching between basic and advanced operations
@@ -145,7 +169,30 @@ button9 = Button(
 	relief = GROOVE ,
 	highlightbackground = '#ffffff' ,
 	command =lambda: press(9))
+
 button9.pack(side = LEFT , expand = True , fill = 'both')
+
+button_sin = Button(
+	button_row1 ,
+	text = 'sin' ,
+	font = ('Segoe UI',15) ,
+	width = 1 ,
+	bd = 0 ,
+	relief = GROOVE ,
+	highlightbackground = '#ffffff' ,
+	)
+#button_sin.pack(expand = True , side = RIGHT , fill = 'both')
+
+button_cos = Button(
+	button_row1 ,
+	text = 'cos' ,
+	font = ('Segoe UI',15) ,
+	width = 1 ,
+	bd = 0 ,
+	relief = GROOVE ,
+	highlightbackground = '#ffffff' ,
+	)
+#button_cos.pack(expand = True , side = RIGHT , fill = 'both')
 
 buttonDEL = Button(
 	button_row1,
@@ -160,7 +207,7 @@ buttonDEL = Button(
 	highlightcolor = '#F23C34' ,
 	fg = '#F23C34' ,
 	command = clear)
-buttonDEL.pack(side = LEFT , expand = True , fill = 'both')
+buttonDEL.pack(side = RIGHT , expand = True , fill = 'both')
 
 buttonAC = Button(
 	button_row1,
@@ -175,7 +222,7 @@ buttonAC = Button(
 	fg = '#ffffff' ,
 	highlightbackground = '#ffffff' ,
 	command = all_clear)
-buttonAC.pack(side = LEFT , expand = True , fill = 'both')
+buttonAC.pack(side = RIGHT , expand = True , fill = 'both')
 
 #Buttons on row 2:
 button4 = Button(
@@ -211,6 +258,26 @@ button6 = Button(
 	command =lambda: press(6))
 button6.pack(side = LEFT , expand = True , fill = 'both')
 
+button_tan = Button(
+	button_row2 ,
+	text = 'tan' ,
+	font = ('Segoe UI',15) ,
+	width = 1 ,
+	bd = 0 ,
+	relief = GROOVE ,
+	highlightbackground = '#ffffff' )
+#button_tan.pack(expand = True , side = RIGHT , fill = 'both')
+
+button_log = Button(
+	button_row2 ,
+	text = 'log' ,
+	font = ('Segoe UI',15) ,
+	width = 1 ,
+	bd = 0 ,
+	relief = GROOVE ,
+	highlightbackground = '#ffffff' )
+#button_log.pack(expand = True , side = RIGHT , fill = 'both')
+
 buttonX = Button(
 	button_row2,
 	text = '*' ,
@@ -220,7 +287,7 @@ buttonX = Button(
 	relief = GROOVE ,
 	highlightbackground = '#ffffff' ,
 	command =lambda : press('*'))
-buttonX.pack(side = LEFT , expand = True , fill = 'both')
+buttonX.pack(side = RIGHT , expand = True , fill = 'both')
 
 buttonDiv = Button(
 	button_row2,
@@ -231,7 +298,7 @@ buttonDiv = Button(
 	relief = GROOVE ,
 	highlightbackground = '#ffffff' ,
 	command = lambda : press('/'))
-buttonDiv.pack(side = LEFT , expand = True , fill = 'both')
+buttonDiv.pack(side = RIGHT , expand = True , fill = 'both')
 
 #Buttons on row 3:
 button1 = Button(
@@ -267,6 +334,24 @@ button3 = Button(
 	command =lambda: press(3))
 button3.pack(side = LEFT , expand = True , fill = 'both')
 
+button_pi = Button(
+	button_row3,
+	text = 'pi' ,
+	font = ('Segoe UI',15) ,
+	width = 1 ,
+	bd = 0 ,
+	relief = GROOVE ,
+	highlightbackground = '#ffffff')
+
+button_exp = Button(
+	button_row3,
+	text = 'e^' ,
+	font = ('Segoe UI',15) ,
+	width = 1 ,
+	bd = 0 ,
+	relief = GROOVE ,
+	highlightbackground = '#ffffff')
+
 buttonPlus = Button(
 	button_row3,
 	text = '+' ,
@@ -276,7 +361,7 @@ buttonPlus = Button(
 	relief = RIDGE ,
 	highlightbackground = '#ffffff' ,
 	command = lambda : press('+'))
-buttonPlus.pack(side = LEFT , expand = True , fill = 'both')
+buttonPlus.pack(side = RIGHT , expand = True , fill = 'both')
 
 buttonSub = Button(
 	button_row3,
@@ -287,7 +372,7 @@ buttonSub = Button(
 	bd = 0 ,
 	relief = GROOVE ,
 	command = lambda : press('-'))
-buttonSub.pack(side = LEFT , expand = True , fill = 'both')
+buttonSub.pack(side = RIGHT , expand = True , fill = 'both')
 
 #Buttons on row 4 :
 button0 = Button(
@@ -300,6 +385,7 @@ button0 = Button(
 	highlightbackground = '#ffffff' ,
 	command =lambda: press(0))
 button0.pack(side = LEFT , expand = True , fill = 'both')
+
 
 buttonDot = Button(
 	button_row4,
@@ -323,6 +409,36 @@ buttonPower = Button(
 	command = lambda : press('**'))
 buttonPower.pack(side = LEFT , expand = True , fill = 'both')
 
+buttonOB = Button(
+	button_row4,
+	text = '(' ,
+	font = ('Segoe UI Bold',20) ,
+	width = 1 ,
+	bd = 0 ,
+	relief = GROOVE ,
+	highlightbackground = '#ffffff' ,
+	command = lambda : press('('))
+
+buttonCB = Button(
+	button_row4,
+	text = ')' ,
+	font = ('Segoe UI Bold',20) ,
+	width = 1 ,
+	bd = 0 ,
+	relief = GROOVE ,
+	highlightbackground = '#ffffff' ,
+	command = lambda : press(')'))
+
+button_fact = Button(
+	button_row4,
+	text = '!' ,
+	font = ('Segoe UI',15) ,
+	width = 1 ,
+	bd = 0 ,
+	relief = GROOVE ,
+	highlightbackground = '#ffffff' ,
+	command = lambda : press('('))
+
 buttonEqual = Button(
 	button_row4,
 	text = '=' ,
@@ -334,14 +450,6 @@ buttonEqual = Button(
 	highlightbackground = '#FFFFFF' ,
 	command = equal_to)
 buttonEqual.pack(side = LEFT , expand = True , fill = 'both')
-'''
-button7 = Button(
-	button_row4,
-	text = '7' ,
-	font = ('Segoe UI Bold',20) ,
-	width = 1)
-button7.pack(side = LEFT , expand = True , fill = 'both')
-'''
 
 
 window.mainloop()
