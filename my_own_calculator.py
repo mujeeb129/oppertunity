@@ -60,6 +60,7 @@ def clicked():
 	else :
 		switch.config(text = 'BASIC')
 		window.geometry('270x400')
+		hiding()
 
 def advanced():
 	button0.config(font = ('Segoe UI Bold',20))
@@ -94,6 +95,41 @@ def advanced():
 	buttonEqual.pack(side = RIGHT)
 	buttonDot.pack(side = RIGHT)
 	button_fact.pack(expand = True , side = LEFT , fill = 'both')
+
+def hiding():
+
+	button_sin.forget()
+	button_cos.forget()
+	button_tan.forget()
+	button_log.forget()
+	button_exp.forget()
+	button_pi.forget()
+	buttonOB.forget()
+	buttonCB.forget()
+	button_fact.forget()
+	button0.config(font = ('Segoe UI Bold',17))
+	buttonPower.config(font = ('Segoe UI',17))
+	buttonDot.config(font = ('Segoe UI',17))
+	buttonDot.config(width = 1 ,
+		font = ('Segoe UI' , 17) ,
+		text = '.' ,
+		bd = 0 ,
+		bg = '#D9D9D9' ,
+		relief = GROOVE ,
+		highlightbackground = '#ffffff' ,
+		command = lambda : press('.'))
+	buttonEqual.config(
+		text = '=' ,
+		font = ('Segoe UI',17) ,
+		width = '5' ,
+		bd = 0 ,
+		relief = GROOVE ,
+		bg = '#FFE138' ,
+		highlightbackground = '#FFFFFF' ,
+		command = equal_to)
+	buttonEqual.pack(side = RIGHT)
+	buttonPower.pack(side = LEFT)
+	buttonDot.pack(side = LEFT)
 
 data = StringVar()
 #Creating a menu bar for switching between basic and advanced operations
