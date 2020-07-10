@@ -10,7 +10,6 @@ things to do :
 					  -all_clear() : to clear all the characters in the string variable
 					  -clear() : Delete last entered character
 '''
-
 window = Tk()		#Here we created a window
 window.title("Calculator")			#title() - this method gives title to the window
 window.geometry("270x400+100+100")			#geometry() - this method helps to give desired geometry
@@ -99,29 +98,12 @@ def clicked():
 
 #This function is used to create buttons for advanced mode
 def advanced():
+	buttonPower.pack(side = RIGHT)
+	buttonDot.pack(side = RIGHT)
 	button0.config(font = ('Segoe UI Bold',20))
+	buttonEqual.config(width = 1 , font = ('Segoe UI',15))
 	buttonPower.config(font = ('Segoe UI',15))
 	buttonDot.config(font = ('Segoe UI',15))
-	buttonEqual.config(width = 1)
-	'''
-	buttonEqual.config(width = 1 ,
-		font = ('Segoe UI' , 15) ,
-		text = '.' ,
-		bd = 0 ,
-		bg = '#D9D9D9' ,
-		relief = GROOVE ,
-		highlightbackground = '#ffffff' ,
-		command = lambda : press('.'))
-	buttonDot.config(
-		text = '=' ,
-		font = ('Segoe UI',15) ,
-		width = '1' ,
-		bd = 0 ,
-		relief = GROOVE ,
-		bg = '#FFE138' ,
-		highlightbackground = '#FFFFFF' ,
-		command = equal_to)
-		'''
 	button_sin.pack(expand = True , side = RIGHT , fill = 'both')
 	button_cos.pack(expand = True , side = RIGHT , fill = 'both')
 	button_tan.pack(expand = True , side = LEFT , fill = 'both')
@@ -130,11 +112,10 @@ def advanced():
 	button_pi.pack(expand = True , side = LEFT , fill = 'both')
 	buttonOB.pack(expand = True , side = LEFT , fill = 'both')
 	buttonCB.pack(expand = True , side = LEFT , fill = 'both')
-	buttonPower.pack(side = RIGHT)
 	buttonEqual.pack(side = RIGHT)
-	buttonDot.pack(side = RIGHT)
 	button_fact.pack(expand = True , side = LEFT , fill = 'both')
 
+#This function is to hide the buttons when switching back to basic mode
 def hiding():
 	button_sin.forget()
 	button_cos.forget()
@@ -149,40 +130,26 @@ def hiding():
 	button0.config(font = ('Segoe UI Bold',17))
 	buttonPower.config(font = ('Segoe UI',17))
 	buttonDot.config(font = ('Segoe UI',17))
-	#buttonDot.config(width = 1 ,
-	#	font = ('Segoe UI' , 17) ,
-	#	text = '.' ,
-	#	bd = 0 ,
-	#	bg = '#D9D9D9' ,
-	#	relief = GROOVE ,
-	#	highlightbackground = '#ffffff' ,
-	#	command = lambda : press('.'))
-	#buttonEqual.config(
-	#	text = '=' ,
-	#	font = ('Segoe UI',17) ,
-	#	width = '5' ,
-	#	bd = 0 ,
-	#	relief = GROOVE ,
-	#	bg = '#FFE138' ,
-	#	highlightbackground = '#FFFFFF' ,
-	#	command = equal_to)
 	buttonEqual.pack(side = RIGHT)
 	buttonPower.pack(side = LEFT)
 	buttonDot.pack(side = LEFT)
 
-
+#This function
 def day_night():
 	if night_mode.config('text')[-1]=='D':
 		night_mode.config(text = 'N')
 		nighty()
 	else:
 		night_mode.config(text = 'D')
-
-
+		day()
 
 
 def nighty():
-	switch.config(bg = '#152642' , fg = '#83A9E5' , highlightbackground = '#152642')
+	switch.config(bg = '#152642' , 
+		fg = '#83A9E5' , 
+		highlightbackground = '#152642' ,
+		activebackground = '#83A9E5' ,
+		activeforeground = '#081B33' )
 	labl.config(bg = '#152642' , fg = '#83A9E5')
 	button_row.config(bg = '#152642')
 	button0.config(
@@ -190,188 +157,348 @@ def nighty():
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	button1.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	button2.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	button3.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	button4.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	button5.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	button6.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	button7.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	button8.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	button9.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	buttonPlus.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	buttonOB.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	buttonCB.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	buttonDiv.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	buttonSub.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	buttonPower.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	button_pi.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	button_exp.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	buttonDot.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	buttonX.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	button_sin.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	button_cos.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	button_tan.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	button_log.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	button_fact.config(
 		bg = '#081B33' ,
 		fg = '#83A9E5' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		highlightbackground = '#152642')
 	buttonDEL.config(
-		bg = '#602080' ,
-		fg = '#b030b0' ,
-		activebackground = '#b030b0' ,
-		activeforeground = '#602080' ,
-		highlightbackground = '#152642' ,
-		highlightcolor = '#83A9E5')
+		bg = '#4f3b78' ,
+		fg = '#c4bbf0' ,
+		activebackground = '#90002F' ,
+		activeforeground = '#ffffff' ,
+		highlightbackground = '#152642')
+	buttonAC.config(
+		bg = '#90002F' ,
+		fg = '#ffffff' ,
+		activebackground = '#90002F' ,
+		activeforeground = '#ffffff' ,
+		highlightbackground = '#152642')
+	buttonEqual.config(
+		bg = '#3282b8' ,
+		fg = '#081B33' ,
+		activebackground = '#081B33' ,
+		activeforeground = '#3282b8' ,
+		highlightbackground = '#152642')
 
 
 def day():
 	window.config(bg = '#ffffff')
-
+	switch.config(bg = '#FFFFFF' , 
+		fg = '#000000' , 
+		highlightbackground = '#FFFFFF' , 
+		activebackground = '#ffffff' , 
+		activeforeground = '#000000')
+	labl.config(bg = '#ffffff' , fg = '#000000')
+	button_row.config(bg = '#ffffff')
+	button0.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	button1.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	button2.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	button3.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	button4.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	button5.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	button6.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	button7.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	button8.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	button9.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	buttonPlus.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	buttonOB.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	buttonCB.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	buttonDiv.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	buttonSub.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	buttonPower.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	button_pi.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	button_exp.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	buttonDot.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	buttonX.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	button_sin.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	button_cos.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	button_tan.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	button_log.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	button_fact.config(
+		bg = '#D9D9D9' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#FFFFFF')
+	buttonDEL.config(
+		bg = '#D9D9D9' ,
+		fg = '#F23C34' ,
+		activebackground = '#F23C34' ,
+		activeforeground = '#ffffff' ,
+		highlightbackground = '#ffffff')
+	buttonAC.config(
+		bg = '#F23C34' ,
+		fg = '#ffffff' , 
+		activeforeground = '#ffffff' ,
+		activebackground = '#F23C34' ,
+		highlightbackground = '#ffffff')
+	buttonEqual.config(
+		bg = '#FFE138' ,
+		fg = '#000000' ,
+		activebackground = '#E7E8EB' ,
+		activeforeground = '#000000' ,
+		highlightbackground = '#ffffff')
 
 data = StringVar()
 
@@ -741,10 +868,10 @@ buttonEqual = Button(
 	width = '5' ,
 	bd = 0 ,
 	relief = GROOVE ,
-	bg = '#FFE138' ,
-	highlightbackground = '#FFFFFF' ,
+	#bg = '#FFE138' ,
+	#highlightbackground = '#FFFFFF' ,
 	command = equal_to)
 buttonEqual.pack(side = LEFT , expand = True , fill = 'both')
 
-
+day()
 window.mainloop()
