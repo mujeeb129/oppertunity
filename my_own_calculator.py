@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+#########This is only for showing off my dedication and dedication :)###########
 from tkinter import *
 import math		#math module is used to import advanced math functions
 '''
@@ -134,7 +135,7 @@ def hiding():
 	buttonPower.pack(side = LEFT)
 	buttonDot.pack(side = LEFT)
 
-#This function
+#This function is used to switch from day to night mode
 def day_night():
 	if night_mode.config('text')[-1]=='D':
 		night_mode.config(text = 'N')
@@ -143,13 +144,19 @@ def day_night():
 		night_mode.config(text = 'D')
 		day()
 
-
+#Buttons configeration for dark or night mode 
 def nighty():
 	switch.config(bg = '#152642' , 
 		fg = '#83A9E5' , 
 		highlightbackground = '#152642' ,
 		activebackground = '#83A9E5' ,
 		activeforeground = '#081B33' )
+	night_mode.config(
+		bg = '#152642' ,
+		fg = '#83A9E5' ,
+		activebackground = '#83A9E5' ,
+		activeforeground = '#081B33' ,
+		highlightbackground = '#152642')
 	labl.config(bg = '#152642' , fg = '#83A9E5')
 	button_row.config(bg = '#152642')
 	button0.config(
@@ -321,7 +328,7 @@ def nighty():
 		activeforeground = '#3282b8' ,
 		highlightbackground = '#152642')
 
-
+#Default button configeration or day button configeration
 def day():
 	window.config(bg = '#ffffff')
 	switch.config(bg = '#FFFFFF' , 
@@ -329,6 +336,13 @@ def day():
 		highlightbackground = '#FFFFFF' , 
 		activebackground = '#ffffff' , 
 		activeforeground = '#000000')
+	night_mode.config(font= ('Segoe UI Bold', 10) ,
+	bg = '#ffffff' ,
+	fg = '#000000' ,
+	activebackground = '#ffffff' ,
+	relief = GROOVE ,
+	highlightbackground = '#ffffff' ,
+	bd = 0)
 	labl.config(bg = '#ffffff' , fg = '#000000')
 	button_row.config(bg = '#ffffff')
 	button0.config(
@@ -500,11 +514,14 @@ def day():
 		activeforeground = '#000000' ,
 		highlightbackground = '#ffffff')
 
+#This is for storing data
 data = StringVar()
 
 button_row = Frame(window , height = 0 , bg = '#ffffff')
 button_row.pack(expand = True , side = TOP , fill = 'both')
 
+#Declaring the switch global to access its current state in a function
+#This is button is used to switch between basic and advanced 
 global switch
 switch = Button(
 	button_row ,
@@ -519,12 +536,11 @@ switch = Button(
 	command = clicked)
 switch.pack(side = LEFT , fill = 'both')
 
+#This button is used for switching between day and night mode
 global night_mode
 night_mode = Button(
 	button_row ,
 	text = 'D' ,
-	bg = '#000000' ,
-	fg = '#ffffff' ,
 	width = 1 ,
 	command = day_night)
 night_mode.pack(side = RIGHT , padx = 7)
@@ -536,9 +552,7 @@ labl = Label(
 	anchor = SE ,
 	textvariable = data ,
 	font = ('Segoe UI Bold' , 22) ,
-	height = 2 ,
-	bg ='#ffffff' ,
-	fg = '#000000')
+	height = 2)
 labl.pack(expand = True , fill = 'both')
 
 
@@ -563,7 +577,6 @@ button7 = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command =lambda: press(7))
 button7.pack(side = LEFT, expand = True , fill = 'both')
 
@@ -574,7 +587,6 @@ button8 = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command =lambda: press(8))
 button8.pack(side = LEFT , expand = True , fill = 'both')
 
@@ -585,7 +597,6 @@ button9 = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command =lambda: press(9))
 
 button9.pack(side = LEFT , expand = True , fill = 'both')
@@ -597,9 +608,7 @@ button_sin = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command = fsin)
-#button_sin.pack(expand = True , side = RIGHT , fill = 'both')
 
 button_cos = Button(
 	button_row1 ,
@@ -608,9 +617,7 @@ button_cos = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command = fcos)
-#button_cos.pack(expand = True , side = RIGHT , fill = 'both')
 
 buttonDEL = Button(
 	button_row1,
@@ -619,11 +626,6 @@ buttonDEL = Button(
 	width = 1,
 	bd = 0 ,
 	relief = GROOVE ,
-	activebackground = '#F23C34' ,
-	activeforeground = '#ffffff' ,
-	highlightbackground = '#ffffff' ,
-	highlightcolor = '#F23C34' ,
-	fg = '#F23C34' ,
 	command = clear)
 buttonDEL.pack(side = RIGHT , expand = True , fill = 'both')
 
@@ -634,11 +636,6 @@ buttonAC = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	activebackground = '#F23C34' ,
-	activeforeground = '#ffffff' ,
-	bg = '#F23C34' ,
-	fg = '#ffffff' ,
-	highlightbackground = '#ffffff' ,
 	command = all_clear)
 buttonAC.pack(side = RIGHT , expand = True , fill = 'both')
 
@@ -650,7 +647,6 @@ button4 = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command =lambda: press(4))
 button4.pack(side = LEFT , expand = True , fill = 'both')
 
@@ -661,7 +657,6 @@ button5 = Button(
 	width = 1,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command =lambda: press(5))
 button5.pack(side = LEFT , expand = True , fill = 'both')
 
@@ -672,7 +667,6 @@ button6 = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command =lambda: press(6))
 button6.pack(side = LEFT , expand = True , fill = 'both')
 
@@ -683,9 +677,7 @@ button_tan = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff',
 	command = ftan )
-#button_tan.pack(expand = True , side = RIGHT , fill = 'both')
 
 button_log = Button(
 	button_row2 ,
@@ -694,9 +686,7 @@ button_log = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command = flog)
-#button_log.pack(expand = True , side = RIGHT , fill = 'both')
 
 buttonX = Button(
 	button_row2,
@@ -705,7 +695,6 @@ buttonX = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command =lambda : press('*'))
 buttonX.pack(side = RIGHT , expand = True , fill = 'both')
 
@@ -716,7 +705,6 @@ buttonDiv = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command = lambda : press('/'))
 buttonDiv.pack(side = RIGHT , expand = True , fill = 'both')
 
@@ -728,7 +716,6 @@ button1 = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command =lambda: press(1))
 button1.pack(side = LEFT , expand = True , fill = 'both')
 
@@ -739,7 +726,6 @@ button2 = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command =lambda: press(2))
 button2.pack(side = LEFT , expand = True , fill = 'both')
 
@@ -750,7 +736,6 @@ button3 = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command =lambda: press(3))
 button3.pack(side = LEFT , expand = True , fill = 'both')
 
@@ -761,7 +746,6 @@ button_pi = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command =lambda : press(str(math.pi)))
 
 button_exp = Button(
@@ -771,7 +755,6 @@ button_exp = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command = lambda : press(str(math.e) + '**'))
 
 buttonPlus = Button(
@@ -781,7 +764,6 @@ buttonPlus = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = RIDGE ,
-	highlightbackground = '#ffffff' ,
 	command = lambda : press('+'))
 buttonPlus.pack(side = RIGHT , expand = True , fill = 'both')
 
@@ -790,7 +772,6 @@ buttonSub = Button(
 	text = '-' ,
 	font = ('Segoe UI',15) ,
 	width = 1 ,
-	highlightbackground = '#ffffff' ,
 	bd = 0 ,
 	relief = GROOVE ,
 	command = lambda : press('-'))
@@ -804,7 +785,6 @@ button0 = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command =lambda: press(0))
 button0.pack(side = LEFT , expand = True , fill = 'both')
 
@@ -816,7 +796,6 @@ buttonDot = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command = lambda : press('.'))
 buttonDot.pack(side = LEFT , expand = True , fill = 'both')
 
@@ -827,7 +806,6 @@ buttonPower = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command = lambda : press('**'))
 buttonPower.pack(side = LEFT , expand = True , fill = 'both')
 
@@ -838,7 +816,6 @@ buttonOB = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command = lambda : press('('))
 
 buttonCB = Button(
@@ -848,7 +825,6 @@ buttonCB = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command = lambda : press(')'))
 
 button_fact = Button(
@@ -858,7 +834,6 @@ button_fact = Button(
 	width = 1 ,
 	bd = 0 ,
 	relief = GROOVE ,
-	highlightbackground = '#ffffff' ,
 	command = fact)
 
 buttonEqual = Button(
@@ -868,8 +843,6 @@ buttonEqual = Button(
 	width = '5' ,
 	bd = 0 ,
 	relief = GROOVE ,
-	#bg = '#FFE138' ,
-	#highlightbackground = '#FFFFFF' ,
 	command = equal_to)
 buttonEqual.pack(side = LEFT , expand = True , fill = 'both')
 
